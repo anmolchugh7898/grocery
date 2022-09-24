@@ -17,6 +17,7 @@ class ProductController extends Controller
         $data['description'] = $request->description;
         $data['category_id'] = $request->category_id;
         $data['rating'] = $request->rating;
+        $data['price'] = $request->price;
 
         $query = Products::create($data);
         return [
