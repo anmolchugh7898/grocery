@@ -129,7 +129,7 @@ class ProductController extends Controller
 
             $images = $row['productImages'];
             foreach($images as $key => $image) {
-                $dataPacket[$i]['images'][$key] = public_path('product_images/'.$category_name."/").$image['image'];
+                $dataPacket[$i]['images'][$key] = 'product_images/'.$category_name."/".$image['image'];
             }
         }
         if(count($data) > 0) {
