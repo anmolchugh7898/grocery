@@ -19,8 +19,18 @@ class ProductController extends Controller
         $data['rating'] = $request->rating;
 
         $query = Products::create($data);
+        return [
+            'status' => 200,
+            'success' => true,
+            'message' => 'Product added successfully!',
+            'data' => []
+        ];
+    }
 
-        $category = Category::where('id', $request->category_id)->first('name');
+    public function addProductImages(Request $request)
+    {
+        $query = Products::where('id', $request->product_id)->first();
+        $category = Category::where('id', $query->category_id)->first('name');
         $images = $request->image;
         $dataPacket = [];
         foreach($images as $i => $row) {
@@ -36,7 +46,7 @@ class ProductController extends Controller
         return [
             'status' => 200,
             'success' => true,
-            'message' => 'Product added successfully!',
+            'message' => 'Product images added successfully!',
             'data' => []
         ];
     }
